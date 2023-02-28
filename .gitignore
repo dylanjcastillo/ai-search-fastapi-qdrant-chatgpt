@@ -1,0 +1,5 @@
+.venv/
+.DS_Store
+.mypy_cache/
+__pycache__/
+.env

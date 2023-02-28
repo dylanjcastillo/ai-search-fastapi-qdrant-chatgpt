@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "smart-search-fastapi-qdrant-gpt3"
+version = "0.1.0"
+description = ""
+authors = ["Dylan Castillo <dylanjcastillo@gmail.com>"]
+readme = "README.md"
+packages = [{include = "smart_search_fastapi_qdrant_gpt3"}]
+
+[tool.poetry.dependencies]
+python = "^3.10, <=3.11"
+torch = "^1.13.1"
+fastapi = {extras = ["all"], version = "^0.92.0"}
+qdrant-client = "^1.0.2"
+gunicorn = "^20.1.0"
+sentence-transformers = "^2.2.2"
+python-dotenv = "^1.0.0"
+notebook = "^6.5.2"
+pandas = "^1.5.3"
+openai = "^0.26.5"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+flake8 = "^6.0.0"
+mypy = "^1.0.1"
+beautifulsoup4 = "^4.11.2"
+ipywidgets = "7.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
