@@ -4,11 +4,11 @@ from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
 from config import (
+    COLLECTION_NAME,
     OPENAI_API_KEY,
     QDRANT_API_KEY,
     QDRANT_HOST,
     QDRANT_PORT,
-    COLLECTION_NAME,
 )
 
 openai.api_key = OPENAI_API_KEY
@@ -54,7 +54,7 @@ def read_root():
 
 
 @app.post("/ask")
-def predict(question: str):
+def ask(question: str):
     similar_docs = qdrant_client.search(
         collection_name=COLLECTION_NAME,
         query_vector=retrieval_model.encode(question),
@@ -73,6 +73,9 @@ def predict(question: str):
         frequency_penalty=0,
         presence_penalty=0,
     )
-    response["choices"][0]["text"]
 
-    return {"response": response, "references": references, "prompt": prompt}
+    return {
+        "response": response["choices"][0]["text"],
+        "references": references,
+        "prompt": prompt,
+    }
