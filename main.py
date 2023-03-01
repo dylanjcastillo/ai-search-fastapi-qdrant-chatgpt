@@ -77,5 +77,4 @@ def ask(question: str):
     return {
         "response": response["choices"][0]["text"],
         "references": references,
-        "prompt": prompt,
     }
