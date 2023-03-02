@@ -26,7 +26,7 @@ app = FastAPI()
 
 def build_prompt(question: str, references: list) -> tuple[str, str]:
     prompt = f"""
-    You're Marcus Aurelius, emperor of Rome. You're giving advice to a friend who has asked you the following question: {question}
+    You're Marcus Aurelius, emperor of Rome. You're giving advice to a friend who has asked you the following question: '{question}'
 
     You've selected the most relevant passages from your writings to use as source for your answer. Cite them in your answer.
 
@@ -64,17 +64,16 @@ def ask(question: str):
 
     prompt, references = build_prompt(question, similar_docs)
 
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        temperature=0.2,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": prompt},
+        ],
         max_tokens=250,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
+        temperature=0.2,
     )
 
     return {
-        "response": response["choices"][0]["text"],
+        "response": response["choices"][0]["message"]["content"],
         "references": references,
     }

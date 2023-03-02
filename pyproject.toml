@@ -16,7 +16,7 @@ sentence-transformers = "^2.2.2"
 python-dotenv = "^1.0.0"
 notebook = "^6.5.2"
 pandas = "^1.5.3"
-openai = "^0.26.5"
+openai = "0.27.0"
 uvicorn = {extras = ["standard"], version = "^0.20.0"}
 
 
