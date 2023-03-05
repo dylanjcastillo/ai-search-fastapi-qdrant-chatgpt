@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "smart_search_fastapi_qdrant_gpt3"}]
 
 [tool.poetry.dependencies]
-python = "^3.10, <=3.11"
+python = "^3.10, <3.11"
 torch = "^1.13.1"
 fastapi = {extras = ["all"], version = "^0.92.0"}
 qdrant-client = "^1.0.2"
